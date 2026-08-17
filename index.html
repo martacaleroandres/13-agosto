@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpeg" href="favicon.jpg">
+    <title>Marta Calero - Directora, Cinematógrafa y Editora | Barcelona</title>
+    <meta name="description" content="Directora, cinematógrafa y editora audiovisual especializada en contenido para marcas y productoras. Trabajos de calidad en Barcelona.">
+    <meta name="keywords" content="directora audiovisual Barcelona, cinematógrafa, editora video, producción audiovisual, videografía profesional">
+    <meta name="author" content="Marta Calero">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Marta Calero - Directora y Cinematógrafa">
+    <meta property="og:description" content="Portfolio de trabajos audiovisuales para marcas y productoras. Basada en Barcelona.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="Logo_blanco.png">
+    <meta property="og:image:alt" content="Logo Marta Calero">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #e5e5e6;
+            font-family: 'IBM Plex Mono', 'Courier New', monospace;
+            color: #888888;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 1.5rem 1rem;
+        }
+
+        @media (min-width: 768px) {
+            body {
+                padding: 4rem 6rem;
+            }
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem;
+            overflow: visible;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 1rem;
+                margin-bottom: 8rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 3rem;
+                margin-bottom: 2rem;
+            }
+        }
+
+        .header {
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            gap: 1.2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                gap: 0.8rem;
+                margin-bottom: 1rem;
+            }
+        }
+
+        .header-title {
+            font-size: 0.65rem;
+            letter-spacing: 1.5px;
+            font-weight: 400;
+            text-transform: uppercase;
+            color: #1c1c1c;
+        }
+
+        @media (max-width: 480px) {
+            .header-title {
+                font-size: 0.55rem;
+                letter-spacing: 1px;
+            }
+        }
+
+        .header-title:first-child {
+            text-align: left;
+        }
+
+        .header-title:last-child {
+            text-align: left;
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            overflow: visible;
+            flex: none;
+            padding-right: 0.5rem;
+        }
+
+        .timeline::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .timeline::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .timeline::-webkit-scrollbar-thumb {
+            background: #bbbbbc;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            gap: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0.2rem;
+            border-radius: 4px;
+            align-items: flex-start;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 480px) {
+            .timeline-item {
+                gap: 0.8rem;
+                grid-template-columns: 50px 1fr;
+                padding: 0.15rem;
+            }
+        }
+
+        .timeline-item:hover {
+            background-color: transparent;
+        }
+
+        .date {
+            font-size: 0.7rem;
+            color: #bbbbbc;
+            transition: color 0.3s ease;
+            min-width: 60px;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 480px) {
+            .date {
+                font-size: 0.6rem;
+                min-width: 50px;
+            }
+        }
+
+        .timeline-item:hover .date,
+        .timeline-item.active .date {
+            color: #1c1c1c;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+        }
+
+        .title {
+            font-size: 0.75rem;
+            color: #888888;
+            transition: color 0.3s ease;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            line-height: 1.3;
+            text-transform: uppercase;
+            font-family: 'Helvetica', 'Arial', sans-serif;
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 0.65rem;
+                line-height: 1.2;
+            }
+        }
+
+        .timeline-item:hover .title,
+        .timeline-item.active .title {
+            color: #1c1c1c;
+        }
+
+        .description {
+            font-size: 0.65rem;
+            color: #888888;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+            max-height: 0;
+            overflow: hidden;
+            margin-top: 0;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 480px) {
+            .description {
+                font-size: 0.55rem;
+            }
+        }
+
+        .timeline-item.active .description {
+            opacity: 1;
+            max-height: 50px;
+            margin-top: 0.3rem;
+        }
+
+        /* Video Container - ya no se usa, se mantiene para compatibilidad */
+        .video-container {
+            display: none;
+        }
+
+        /* Modal Popup - Video limpio sin bordes */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: transparent;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            max-width: none;
+            max-height: none;
+        }
+
+        .modal-close {
+            position: absolute;
+            right: 2rem;
+            top: 2rem;
+            font-size: 2.5rem;
+            color: #fff;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: opacity 0.3s;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
+        }
+
+        @media (max-width: 768px) {
+            .modal-close {
+                right: 1rem;
+                top: 1rem;
+                font-size: 2rem;
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .modal-close {
+                right: 0.75rem;
+                top: 0.75rem;
+                font-size: 1.5rem;
+                width: 35px;
+                height: 35px;
+            }
+        }
+
+        .modal-close:hover {
+            opacity: 0.7;
+        }
+
+        .modal-video-player {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border: none;
+            border-radius: 0;
+            background: #000;
+        }
+
+        .modal-video-player iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .modal-title {
+            display: none;
+        }
+
+        /* Contact Footer */
+        .contact-footer {
+            position: fixed;
+            bottom: 3.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .contact-footer {
+                bottom: 2rem;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-footer {
+                bottom: 1rem;
+                gap: 1.5rem;
+            }
+        }
+
+        .footer-link {
+            font-size: 0.55rem;
+            color: #888888;
+            text-decoration: none;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.3s ease;
+            cursor: pointer;
+            font-family: 'IBM Plex Mono', 'Courier New', monospace;
+        }
+
+        @media (max-width: 480px) {
+            .footer-link {
+                font-size: 0.5rem;
+                letter-spacing: 1px;
+            }
+        }
+
+        .footer-link:hover {
+            color: #1c1c1c;
+        }
+
+        /* Mantener compatibilidad con nombre antiguo */
+        .contact-link-footer {
+            font-size: 0.55rem;
+            color: #888888;
+            text-decoration: none;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.3s ease;
+            cursor: pointer;
+            font-family: 'IBM Plex Mono', 'Courier New', monospace;
+        }
+
+        @media (max-width: 480px) {
+            .contact-link-footer {
+                font-size: 0.5rem;
+                letter-spacing: 1px;
+            }
+        }
+
+        .contact-link-footer:hover {
+            color: #1c1c1c;
+        }
+
+        /* Contact Modal */
+        .contact-modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .contact-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-modal-content {
+            background-color: transparent;
+            padding: 2.5rem 1.5rem 4rem;
+            position: relative;
+            max-width: 100%;
+            width: auto;
+            border-radius: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            box-shadow: none;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        @media (max-width: 480px) {
+            .contact-modal-content {
+                padding: 1.5rem 1rem 3rem;
+                gap: 1.5rem;
+                max-width: auto;
+                width: auto;
+            }
+        }
+
+        .contact-modal-content a {
+            color: #e5e5e6;
+            text-decoration: none;
+            font-size: 0.7rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            font-family: 'IBM Plex Mono', 'Courier New', monospace;
+        }
+
+        @media (max-width: 480px) {
+            .contact-modal-content a {
+                font-size: 0.6rem;
+            }
+        }
+
+        .contact-modal-content a:hover {
+            color: #888888;
+        }
+
+        .contact-close {
+            position: absolute;
+            right: 50%;
+            transform: translateX(50%);
+            bottom: 2rem;
+            font-size: 1.5rem;
+            color: #e5e5e6;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: opacity 0.3s;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 480px) {
+            .contact-close {
+                bottom: 1.5rem;
+                font-size: 1.2rem;
+                width: 25px;
+                height: 25px;
+            }
+        }
+
+        .contact-close:hover {
+            opacity: 0.7;
+        }
+
+        /* About Modal - igual que contact */
+        .about-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .about-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-modal-content {
+            background-color: transparent;
+            padding: 2.5rem 1.5rem 4rem;
+            position: relative;
+            max-width: 100%;
+            width: auto;
+            border-radius: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            box-shadow: none;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        @media (max-width: 480px) {
+            .about-modal-content {
+                padding: 1.5rem 1rem 3rem;
+                gap: 1.5rem;
+                max-width: auto;
+                width: auto;
+            }
+        }
+
+        .about-modal-content div {
+            position: relative;
+            top: auto;
+            right: auto;
+            text-align: center;
+        }
+
+        .about-modal-content p {
+            color: #e5e5e6;
+            text-decoration: none;
+            font-size: 0.7rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            font-family: 'IBM Plex Mono', 'Courier New', monospace;
+            line-height: 1.6;
+            max-width: 600px;
+        }
+
+        @media (max-width: 480px) {
+            .about-modal-content p {
+                font-size: 0.6rem;
+            }
+        }
+
+        .about-modal-content p:hover {
+            color: #888888;
+        }
+
+        .about-close {
+            position: absolute;
+            right: 50%;
+            transform: translateX(50%);
+            bottom: 2rem;
+            font-size: 1.5rem;
+            color: #e5e5e6;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: opacity 0.3s;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 480px) {
+            .about-close {
+                bottom: 1.5rem;
+                font-size: 1.2rem;
+                width: 25px;
+                height: 25px;
+            }
+        }
+
+        .about-close:hover {
+            opacity: 0.7;
+        }
+
+        /* Animación de entrada */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .timeline-item {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.05s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.15s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(5) { animation-delay: 0.25s; }
+        .timeline-item:nth-child(6) { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-title">VIDEO</div>
+            <div class="header-title">NAME</div>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="date">0.01</div>
+                <div class="content">
+                    <div class="title">OXDOG (BEHIND THE SCENES)</div>
+                    <div class="description">E-COMMERCE PLATFORM WITH MODERN DESIGN</div>
+                    <div class="video-container">
+                        <div class="video-player">
+                            <iframe src="https://player.vimeo.com/video/1147797479" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="date">0.02</div>
+                <div class="content">
+                    <div class="title">POSTCARDS FROM RESERVE CUP MIAMI 2026</div>
+                    <div class="description"></div>
+                    <div class="video-container">
+                        <div class="video-player">
+                            <iframe src="https://player.vimeo.com/video/1217996450" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="date">0.03</div>
+                <div class="content">
+                    <div class="title">LA VELADA DEL AÑO III</div>
+                    <div class="description">Content management system tutorial</div>
+                    <div class="video-container">
+                        <div class="video-player">
+                            <iframe src="https://player.vimeo.com/video/907376667" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="date">0.04</div>
+                <div class="content">
+                    <div class="title">PLAYTIME WITH SIUX</div>
+                    <div class="description">AWARD-WINNING WEB DESIGN RECOGNITION</div>
+                    <div class="video-container">
+                        <div class="video-player">
+                            <iframe src="https://player.vimeo.com/video/1104921622" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="date">0.05</div>
+                <div class="content">
+                    <div class="title">DUNES</div>
+                    <div class="description">Design excellence recognition</div>
+                    <div class="video-container">
+                        <div class="video-player">
+                            <iframe src="https://player.vimeo.com/video/1135026574" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="date">0.06</div>
+                <div class="content">
+                    <div class="title">SCOTIAROOM FCB (BEHIND THE SCENES)</div>
+                    <div class="description">Email marketing platform features</div>
+                    <div class="video-container">
+                        <div class="video-player">
+                            <iframe src="https://player.vimeo.com/video/1110678097" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="date">0.07</div>
+                <div class="content">
+                    <div class="title">FCB FEMENÍ | EL MON ENS MIRA (BEHIND THE SCENES)</div>
+                    <div class="description">EMAIL SERVICE INTEGRATION SHOWCASE</div>
+                    <div class="video-container">
+                        <div class="video-player">
+                            <iframe src="https://player.vimeo.com/video/1108472386" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para videos -->
+    <div class="modal" id="videoModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">✕</button>
+            <div class="modal-title" id="modalTitle">TITULO</div>
+            <div class="modal-video-player" id="modalVideoContainer">
+                <!-- El video se inyecta aquí con JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="contact-footer">
+        <a class="footer-link" id="contactLink">CONTACT</a>
+        <a class="footer-link" id="aboutLink">ABOUT ME</a>
+    </footer>
+
+    <!-- Contact Modal -->
+    <div class="contact-modal" id="contactModal">
+        <div class="contact-modal-content">
+            <div>
+                <a href="mailto:hello@martacalero.com">hello@martacalero.com</a>
+            </div>
+            <button class="contact-close" id="contactClose">✕</button>
+        </div>
+    </div>
+
+    <!-- About Modal -->
+    <div class="about-modal" id="aboutModal">
+        <div class="about-modal-content">
+            <div>
+                <p>¡Hey! Soy Marta, especializada en contenido audiovisual para marcas y productoras. Puedes encontrarme en Barcelona :)</p>
+            </div>
+            <button class="about-close" id="aboutClose">✕</button>
+        </div>
+    </div>
+
+    <script>
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        const modal = document.getElementById('videoModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalVideoContainer = document.getElementById('modalVideoContainer');
+        
+        // Contact Modal
+        const contactLink = document.getElementById('contactLink');
+        const contactModal = document.getElementById('contactModal');
+        const contactClose = document.getElementById('contactClose');
+
+        // Extraer URLs de videos de los items
+        const videoData = [];
+        timelineItems.forEach(item => {
+            const title = item.querySelector('.title').textContent;
+            const iframe = item.querySelector('iframe');
+            const videoUrl = iframe ? iframe.src : null;
+            videoData.push({ title, videoUrl });
+        });
+
+        // Abrir modal al hacer click en timeline
+        timelineItems.forEach((item, index) => {
+            item.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (videoData[index].videoUrl) {
+                    modalTitle.textContent = videoData[index].title;
+                    modalVideoContainer.innerHTML = `<iframe src="${videoData[index].videoUrl}" allowfullscreen></iframe>`;
+                    modal.classList.add('active');
+                }
+            });
+        });
+
+        // Cerrar modal de videos
+        modalClose.addEventListener('click', () => {
+            modal.classList.remove('active');
+            modalVideoContainer.innerHTML = '';
+        });
+
+        // Cerrar modal al hacer click fuera
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                modalVideoContainer.innerHTML = '';
+            }
+        });
+
+        // Cerrar modal con tecla ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+                modalVideoContainer.innerHTML = '';
+            }
+        });
+
+        // Contact Modal handling
+        contactLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            contactModal.classList.add('active');
+        });
+
+        // Cerrar contact modal con el botón
+        contactClose.addEventListener('click', (e) => {
+            e.preventDefault();
+            contactModal.classList.remove('active');
+        });
+
+        // Cerrar contact modal al hacer click fuera
+        contactModal.addEventListener('click', (e) => {
+            if (e.target === contactModal) {
+                contactModal.classList.remove('active');
+            }
+        });
+
+        // Cerrar contact modal con ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && contactModal.classList.contains('active')) {
+                contactModal.classList.remove('active');
+            }
+        });
+
+        // About Modal handling
+        const aboutLink = document.getElementById('aboutLink');
+        const aboutModal = document.getElementById('aboutModal');
+        const aboutClose = document.getElementById('aboutClose');
+
+        aboutLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            aboutModal.classList.add('active');
+        });
+
+        // Cerrar about modal con el botón
+        aboutClose.addEventListener('click', (e) => {
+            e.preventDefault();
+            aboutModal.classList.remove('active');
+        });
+
+        // Cerrar about modal al hacer click fuera
+        aboutModal.addEventListener('click', (e) => {
+            if (e.target === aboutModal) {
+                aboutModal.classList.remove('active');
+            }
+        });
+
+        // Cerrar about modal con ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && aboutModal.classList.contains('active')) {
+                aboutModal.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
